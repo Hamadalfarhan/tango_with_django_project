@@ -44,7 +44,8 @@ def add_category(request):
     return render(request, 'rango/add_category.html', {'form': form})
 
 def about(request):
-    return render(request, 'rango/about.html')
+    context_dict = {'boldmessage': 'This tutorial has been put together by Hamad.'}
+    return render(request, 'rango/about.html', context=context_dict)
 
 
 def add_page(request, category_name_slug):
