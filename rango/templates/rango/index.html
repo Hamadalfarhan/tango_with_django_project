@@ -11,20 +11,5 @@
         {{ boldmessage }}
     </div>
 
-    {% if categories %}
-        <ul>
-        {% for category in categories %}
-            <li>
-                <a href="{% url 'rango:show_category' category.slug %}">
-                    {{ category.name }}
-                </a>
-                (Likes: {{ category.likes }})
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <strong>There are no categories present.</strong>
-    {% endif %}
-
     <a href="{% url 'rango:add_category' %}">Add a New Category</a>
 {% endblock %}
