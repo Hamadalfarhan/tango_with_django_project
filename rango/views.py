@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
 def index(request):
+    request.session.set_test_cookie()
+    
     category_list = Category.objects.order_by('-likes')[:5]
 
     context_dict = {}
