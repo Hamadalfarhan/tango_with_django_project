@@ -49,7 +49,13 @@ def add_category(request):
 
 def about(request):
     context_dict = {'boldmessage': 'This tutorial has been put together by Hamad.'}
+
+    if request.session.test_cookie_worked():
+        print("TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
+
     return render(request, 'rango/about.html', context=context_dict)
+
 
 
 def add_page(request, category_name_slug):
