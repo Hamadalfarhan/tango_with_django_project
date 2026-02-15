@@ -1,15 +1,15 @@
-{% extends 'rango/base.html' %}
-
-{% block title_block %}
-    Index
-{% endblock %}
-
 {% block body_block %}
-    <h1>Rango says...</h1>
+<h1>Rango says...</h1>
 
-    <div>
-        {{ boldmessage }}
-    </div>
+{% if user.is_authenticated %}
+    <p>Howdy {{ user.username }}!</p>
+{% else %}
+    <p>Hey there partner!</p>
+{% endif %}
 
-    <a href="{% url 'rango:add_category' %}">Add a New Category</a>
+<div>
+    {{ boldmessage }}
+</div>
+
+<a href="{% url 'rango:add_category' %}">Add a New Category</a>
 {% endblock %}
