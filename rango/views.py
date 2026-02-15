@@ -4,6 +4,7 @@ from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
@@ -128,3 +129,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect(reverse('rango:index'))
+
+@login_required
+def restricted(request):
+    return HttpResponse('Since you are logged in, you can see this text!')
