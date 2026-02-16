@@ -1,4 +1,5 @@
 {% block body_block %}
+
 <h1>Rango says...</h1>
 
 {% if user.is_authenticated %}
@@ -7,9 +8,24 @@
     <p>Hey there partner!</p>
 {% endif %}
 
-<div>
-    {{ boldmessage }}
-</div>
+<p>{{ boldmessage }}</p>
+
+<h2>Most Liked Categories</h2>
+<ul>
+{% for category in categories %}
+    <li><a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a></li>
+{% endfor %}
+</ul>
+
+<h2>Most Viewed Pages</h2>
+<ul>
+{% for page in pages %}
+    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+{% endfor %}
+</ul>
+
+<p><strong>Visits:</strong> {{ visits }}</p>
 
 <a href="{% url 'rango:add_category' %}">Add a New Category</a>
+
 {% endblock %}
